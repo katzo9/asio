@@ -78,8 +78,8 @@ public:
     state_ |= 1;
     if (state_ > 1)
     {
-      lock.unlock();
       ::pthread_cond_signal(&cond_); // Ignore EINVAL.
+      lock.unlock();
       return true;
     }
     return false;
